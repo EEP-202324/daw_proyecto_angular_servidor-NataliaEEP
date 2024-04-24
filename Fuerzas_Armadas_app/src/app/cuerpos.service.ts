@@ -11,7 +11,7 @@ export class CuerposService {
   cuerposList: CuerposInterface[] = [
     {
       id: 0,
-      cuerpo: 'Cuerpos generales e infantería de Marina',
+      cuerpo: 'Cuerpos Generales e Infantería de Marina',
       titulacion: 'Titulaciones de grado',
       requisitos_edad: 'Ingreso directo con exigencia previa de titulación de grado universitario: 27 años',
       pais: 'ESP',
