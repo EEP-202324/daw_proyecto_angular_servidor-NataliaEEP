@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { CuerposInterface } from '../cuerposInterface';
 
 @Component({
   selector: 'app-titulaciones',
@@ -8,5 +10,6 @@ import { Component } from '@angular/core';
   styleUrl: './cuerpos.component.css'
 })
 export class CuerposComponent {
+  @Input() cuerpos!: CuerposInterface;
 
 }
