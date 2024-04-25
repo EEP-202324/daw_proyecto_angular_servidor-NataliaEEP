@@ -2,5 +2,6 @@
   <img class="listing-photo" [src]="cuerpos.photo" alt="{{cuerpos.cuerpo}}">
   <h2 class="listing-heading">{{ cuerpos.cuerpo }}</h2>
   <p class="listing-location">{{ cuerpos.pais}}</p>
+  <a [routerLink]="['/details', cuerpos.id]">Learn More</a>
 </section>
 <br>
