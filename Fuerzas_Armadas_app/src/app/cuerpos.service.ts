@@ -16,6 +16,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo con exigencia previa de titulación de grado universitario: 27 años',
       pais: 'ESP',
       photo: `https://s3.abcstatics.com/Media/201202/28/marinabosnia--644x362.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/INTERVENCION.pdf`,
     },
     {
       id: 1,
@@ -24,6 +25,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://www.tribunadesanluis.com.mx/incoming/mqmwez-ejercito.jpg/alternates/LANDSCAPE_768/ejercito.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/INTENDENCIA.pdf`,
     },
     {
       id: 2,
@@ -32,6 +34,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://s2.ppllstatics.com/lagacetadesalamanca/www/multimedia/2023/03/05/cuartel-arroquia-nuevo-coronel-luis-fernando-nunez-8_1-4427966_20230305110044--1200x800.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/CUERPO-DE-INGENIEROS.pdf`,
     },
     {
       id: 3,
@@ -40,6 +43,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://www.encastillalamancha.es/wp-content/uploads/2020/02/ser_soldado.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/CUERPO-DE-INGENIEROS.pdf`,
     },
     {
       id: 4,
@@ -48,6 +52,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://imagenes.heraldo.es/files/image_990_556/files/fp/uploads/imagenes/2021/08/03/defensa.r_d.1882-1640.jpeg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/JURIDICO.pdf`,
     },
     {
       id: 5,
@@ -56,6 +61,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://www.politicaexterior.com/wp-content/uploads/2021/07/intervenciones-militares.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/INTERVENCION.pdf`,
     },
     {
       id: 6,
@@ -64,6 +70,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://www.redaccionmedica.com/images/destacados/las-fuerzas-armadas-ya-tienen-su-primera-promocion-de-medicos-militares-3989_620x368.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/MEDICINA-CON-TITULACION.pdf`,
     },
     {
       id: 7,
@@ -72,6 +79,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://pir.es/wp-content/uploads/2022/03/OPOSICION-PSICOLOGO-MILITAR-IMAGEN-FREEPIK.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/PSICOLOGIA.pdf`,
     },
     {
       id: 8,
@@ -80,6 +88,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://scielo.isciii.es/img/revistas/sm/v76n2//1887-8571-sm-76-02-96-gf6.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/FARMACIA.pdf`,
     },
     {
       id: 9,
@@ -88,6 +97,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://gacetadental.com/wp-content/uploads/2022/07/DSCN9278-768x575.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/ODONTOLOGIA.pdf`,
     },
     {
       id: 10,
@@ -96,6 +106,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://www.portalveterinaria.com/upload/20220503124534veterinariomilitardefensa.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/VETERINARIA.pdf`,
     },
     {
       id: 11,
@@ -104,6 +115,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://coepo.com/Colegio/wp-content/uploads/2020/05/enfermera-militar.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/ENFERMERIA.pdf`,
     },
     {
       id: 12,
@@ -112,6 +124,7 @@ export class CuerposService {
       requisitos_edad: 'Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima',
       pais: 'ESP',
       photo: `https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Banda_militar_corneta.jpg/1200px-Banda_militar_corneta.jpg`,
+      pdf: `https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/OFICIALES-MUSICA.pdf`,
     },
   ];
 

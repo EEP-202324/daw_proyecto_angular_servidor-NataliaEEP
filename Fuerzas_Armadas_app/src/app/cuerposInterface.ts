@@ -5,5 +5,6 @@ export interface CuerposInterface {
   requisitos_edad: string;
   pais: string;
   photo: string;
+  pdf: string;
 
 }
