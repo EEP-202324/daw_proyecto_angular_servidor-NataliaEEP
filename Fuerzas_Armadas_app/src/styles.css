@@ -12,6 +12,7 @@ body {
   --secondary-color: #191829;
   --accent-color: #FFEA90;
   --shadow-color: #E8E8E8;
+  --link-color: #fc0000;
 }
 
 button.primary {
