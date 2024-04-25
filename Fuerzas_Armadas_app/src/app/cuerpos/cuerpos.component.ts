@@ -4,7 +4,7 @@ import { CuerposInterface } from '../cuerposInterface';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-titulaciones',
+  selector: 'app-cuerpos',
   standalone: true,
   imports: [RouterLink, RouterOutlet],
   templateUrl: './cuerpos.component.html',
