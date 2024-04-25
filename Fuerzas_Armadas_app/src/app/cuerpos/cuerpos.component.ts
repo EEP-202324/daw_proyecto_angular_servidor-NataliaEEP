@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CuerposInterface } from '../cuerposInterface';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-titulaciones',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './cuerpos.component.html',
   styleUrl: './cuerpos.component.css'
 })
