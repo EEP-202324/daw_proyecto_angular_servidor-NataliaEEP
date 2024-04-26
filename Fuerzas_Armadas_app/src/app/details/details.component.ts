@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { CuerposService } from '../cuerpos.service';
 import { CuerposInterface } from '../cuerposInterface';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
@@ -18,8 +22,24 @@ export class DetailsComponent {
   cuerposService = inject(CuerposService);
   cuerposLocation: CuerposInterface | undefined;
 
+  applyForm = new FormGroup({
+    nombre: new FormControl(''),
+    apellidos: new FormControl(''),
+    dni: new FormControl(''),
+    email: new FormControl('')
+  });
+
   constructor() {
     const cuerposId = Number(this.route.snapshot.params['id']);
     this.cuerposLocation = this.cuerposService.getCuerposById(cuerposId);
+  }
+
+  submitApplication() {
+    this.cuerposService.submitApplication(
+      this.applyForm.value.nombre ?? '',
+      this.applyForm.value.apellidos ?? '',
+      this.applyForm.value.dni ?? '',
+      this.applyForm.value.email ?? ''
+    );
   }
 }
