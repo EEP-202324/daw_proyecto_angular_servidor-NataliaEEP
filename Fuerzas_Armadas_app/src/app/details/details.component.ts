@@ -11,10 +11,15 @@ import { CuerposInterface } from '../cuerposInterface';
   templateUrl: './details.component.html',
   styleUrl: './details.component.css'
 })
+
 export class DetailsComponent {
+
   route: ActivatedRoute = inject(ActivatedRoute);
-  cuerposId = -1;
+  cuerposService = inject(CuerposService);
+  cuerposLocation: CuerposInterface | undefined;
+
   constructor() {
-      this.cuerposId = Number(this.route.snapshot.params['id']);
+    const cuerposId = Number(this.route.snapshot.params['id']);
+    this.cuerposLocation = this.cuerposService.getCuerposById(cuerposId);
   }
 }
