@@ -17,8 +17,10 @@ export class HomeComponent {
 
   cuerposList: CuerposInterface[] = [];
   housingService: CuerposService = inject(CuerposService);
+  filteredLocationList: CuerposInterface[] = [];
 
-constructor() {
-  this.cuerposList = this.housingService.getAllCuerpos();
-}
+  constructor() {
+    this.cuerposList = this.housingService.getAllCuerpos();
+    this.filteredLocationList = this.cuerposList;
+  }
 }
