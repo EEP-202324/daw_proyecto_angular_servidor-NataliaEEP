@@ -6,6 +6,10 @@ import { CuerposInterface } from './cuerposInterface';
 })
 export class CuerposService {
 
+  submitApplication(nombre: string, apellidos: string, dni: string, email: string) {
+    console.log(`Homes application received: Nombre: ${nombre}, Apellidos: ${apellidos}, Dni: ${dni}, email: ${email}.`);
+  }
+
   constructor() { }
 
   cuerposList: CuerposInterface[] = [
