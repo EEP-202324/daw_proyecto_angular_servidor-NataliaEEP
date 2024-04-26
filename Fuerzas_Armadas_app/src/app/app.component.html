@@ -1,10 +1,12 @@
+
 <main>
   <header class="brand-name">
-    <img class="brand-logo" src="/assets/Logo_Fuerzas_Armadas.png" alt="Logo_Fuerzas_Armadas">
-    <h1>"Comparte nuestros valores"</h1>
+    <a [routerLink]="['/']">
+      <img class="brand-logo" src="/assets/Logo_Fuerzas_Armadas.png" alt="logo">
+    </a>
+      <h1>"Comparte nuestros valores"</h1>
   </header>
   <section class="content">
     <router-outlet></router-outlet>
   </section>
 </main>
-
