@@ -1,1 +1,15 @@
-<p>details works! {{ cuerposId }}</p>
+<article>
+  <img class="listing-photo" [src]="cuerposLocation?.photo"
+    alt="{{cuerposLocation?.cuerpo}}"/>
+  <section class="listing-description">
+    <h1 class="listing-heading1">{{cuerposLocation?.cuerpo}}</h1>
+    <h2 class="listing-heading2">{{cuerposLocation?.titulacion}}</h2>
+  </section>
+  <section class="listing-features">
+    <h2 class="section-heading">Sobre este Cuerpo:</h2>
+    <a href="{{cuerposLocation?.pdf}}" target="_blank">
+      Más Información
+      <embed src="{{cuerposLocation?.pdf}}" type="application/pdf" width="100%" height="500px" />
+    </a>
+  </section>
+</article>
