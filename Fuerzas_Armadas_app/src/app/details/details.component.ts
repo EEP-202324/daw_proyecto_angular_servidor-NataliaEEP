@@ -30,8 +30,10 @@ export class DetailsComponent {
   });
 
   constructor() {
-    const cuerposId = Number(this.route.snapshot.params['id']);
-    this.cuerposLocation = this.cuerposService.getCuerposById(cuerposId);
+    const cuerposId = parseInt(this.route.snapshot.params['id'], 10);
+    this.cuerposService.getCuerposById(cuerposId).then(cuerposLocation => {
+      this.cuerposLocation = cuerposLocation;
+    });
   }
 
   submitApplication() {
