@@ -28,9 +28,10 @@ export class HomeComponent {
     );
   }
   filteredLocationList: CuerposInterface[] = [];
-
   constructor() {
-    this.cuerposList = this.housingService.getAllCuerpos();
-    this.filteredLocationList = this.cuerposList;
+    this.housingService.getAllCuerpos().then((cuerposList: CuerposInterface[]) => {
+      this.cuerposList = cuerposList;
+      this.filteredLocationList = cuerposList;
+    });
   }
 }
