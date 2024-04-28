@@ -1,12 +1,12 @@
 <section>
   <form>
-    <input type="text" placeholder="Preguntas frecuentes">
-    <button class="primary" type="button">Buscar</button>
+    <input type="text" placeholder="Preguntas frecuentes" #filter>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
   </form>
 </section>
 <section class="results">
   <app-cuerpos
-  *ngFor="let cuerpos of cuerposList"
+  *ngFor="let cuerpos of filteredLocationList"
   [cuerpos]="cuerpos">
   </app-cuerpos>
 </section>
