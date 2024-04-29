@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CuerposInterface } from './cuerposInterface';
 import { HttpClient } from '@angular/common/http';
 import { Peticion } from './peticion';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,7 @@ export class CuerposService {
   }
 
   enviarPeticion(peticion: Peticion) {
-    alert("peticion recibida")
+    alert("peticion recibida");
+    return this.http.post<Peticion>("urlPendiente", peticion);
   }
 }

@@ -52,6 +52,9 @@ export class DetailsComponent {
       this.applyForm.value.pdf ?? ''
     );
     const peticion: Peticion = {...(this.applyForm.value)};
-    this.cuerposService.enviarPeticion(peticion);
+    this.cuerposService.enviarPeticion(peticion).subscribe({
+      next: peticion => {alert (peticion.id)},
+      error: error => {alert("ERROR: " + error)}
+  });
   }
 }
