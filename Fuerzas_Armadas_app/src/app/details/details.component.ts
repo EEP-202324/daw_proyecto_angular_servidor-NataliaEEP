@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CuerposService } from '../cuerpos.service';
 import { CuerposInterface } from '../cuerposInterface';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Peticion } from '../peticion';
 
 @Component({
   selector: 'app-details',
@@ -23,25 +24,34 @@ export class DetailsComponent {
   cuerposLocation: CuerposInterface | undefined;
 
   applyForm = new FormGroup({
-    nombre: new FormControl(''),
-    apellidos: new FormControl(''),
-    dni: new FormControl(''),
-    email: new FormControl('')
+    id: new FormControl(''),
+    cuerpo: new FormControl(''),
+    titulacion: new FormControl(''),
+    requisitos_edad: new FormControl(''),
+    pais: new FormControl(''),
+    photo: new FormControl(''),
+    pdf: new FormControl('')
   });
 
   constructor() {
-    const cuerposId = parseInt(this.route.snapshot.params['id'], 10);
-    this.cuerposService.getCuerposById(cuerposId).then(cuerposLocation => {
-      this.cuerposLocation = cuerposLocation;
+    const cuerpoId = parseInt(this.route.snapshot.params['id']);
+    this.cuerposService.getCuerpo(cuerpoId).subscribe(
+      cuerpo => {
+      this.cuerposLocation = cuerpo;
     });
   }
 
   submitApplication() {
     this.cuerposService.submitApplication(
-      this.applyForm.value.nombre ?? '',
-      this.applyForm.value.apellidos ?? '',
-      this.applyForm.value.dni ?? '',
-      this.applyForm.value.email ?? ''
+      this.applyForm.value.id ?? '',
+      this.applyForm.value.cuerpo ?? '',
+      this.applyForm.value.titulacion ?? '',
+      this.applyForm.value.requisitos_edad ?? '',
+      this.applyForm.value.pais ?? '',
+      this.applyForm.value.photo ?? '',
+      this.applyForm.value.pdf ?? ''
     );
+    const peticion: Peticion = {...(this.applyForm.value)};
+    this.cuerposService.enviarPeticion(peticion);
   }
 }
