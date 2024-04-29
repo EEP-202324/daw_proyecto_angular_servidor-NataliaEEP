@@ -16,7 +16,7 @@ import { CuerposService } from '../cuerpos.service';
 export class HomeComponent {
 
   cuerposList: CuerposInterface[] = [];
-  housingService: CuerposService = inject(CuerposService);
+  cuerposService: CuerposService = inject(CuerposService);
   filterResults(text: string) {
     if (!text) {
       this.filteredLocationList = this.cuerposList;
@@ -24,12 +24,12 @@ export class HomeComponent {
     }
 
     this.filteredLocationList = this.cuerposList.filter(
-      housingLocation => housingLocation?.cuerpo.toLowerCase().includes(text.toLowerCase())
+      cuerposLocation => cuerposLocation?.cuerpo.toLowerCase().includes(text.toLowerCase())
     );
   }
   filteredLocationList: CuerposInterface[] = [];
   constructor() {
-    this.housingService.getAllCuerpos().then((cuerposList: CuerposInterface[]) => {
+    this.cuerposService.getAllCuerpos().then((cuerposList: CuerposInterface[]) => {
       this.cuerposList = cuerposList;
       this.filteredLocationList = cuerposList;
     });
