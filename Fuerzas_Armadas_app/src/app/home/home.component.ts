@@ -3,6 +3,7 @@ import { CuerposComponent } from '../cuerpos/cuerpos.component';
 import { CommonModule } from '@angular/common';
 import { CuerposInterface } from '../cuerposInterface';
 import { CuerposService } from '../cuerpos.service';
+import { of } from 'rxjs';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -28,10 +29,12 @@ export class HomeComponent {
     );
   }
   filteredLocationList: CuerposInterface[] = [];
+
   constructor() {
-    this.cuerposService.getAllCuerpos().then((cuerposList: CuerposInterface[]) => {
-      this.cuerposList = cuerposList;
-      this.filteredLocationList = cuerposList;
+    this.cuerposService.getCuerpos().subscribe(
+      cuerpos => {
+        this.cuerposList = cuerpos;
+        this.filteredLocationList = cuerpos;
     });
   }
 }

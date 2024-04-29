@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CuerposInterface } from './cuerposInterface';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,18 +8,28 @@ import { CuerposInterface } from './cuerposInterface';
 export class CuerposService {
 
   url = 'http://localhost:3000/locations';
+  urlPeticion = 'http://localhost:8080/cuerpo';
+  constructor(private http: HttpClient) { }
 
-  async getAllCuerpos(): Promise<CuerposInterface[]> {
-    const data = await fetch(this.url);
-    return await data.json() ?? [];
+  getCuerpos() {
+    return this.http.get<CuerposInterface[]>(this.url);
   }
 
-  async getCuerposById(id: number): Promise<CuerposInterface | undefined> {
-    const data = await fetch(`${this.url}/${id}`);
-    return await data.json() ?? {};
+  getCuerpo(id: number) {
+    return this.http.get<CuerposInterface>(`${this.url}/${id}`);
   }
 
-  submitApplication(nombre: string, apellidos: string, dni: string, email: string) {
-    console.log(`Homes application received: Nombre: ${nombre}, Apellidos: ${apellidos}, Dni: ${dni}, email: ${email}.`);
+  // async getAllCuerpos(): Promise<CuerposInterface[]> {
+  //   const data = await fetch(this.url);
+  //   return await data.json() ?? [];
+  // }
+
+  // async getCuerposById(id: number): Promise<CuerposInterface | undefined> {
+  //   const data = await fetch(`${this.url}/${id}`);
+  //   return await data.json() ?? {};
+  // }
+
+  submitApplication(id: string, cuerpo: string, titulacion: string, requisitos_edad: string, pais: string, photo: string, pdf: string) {
+    console.log(`Homes application received: Id: ${id}, Cuerpo: ${cuerpo}, Titulacion: ${titulacion}, Requisitos_edad: ${requisitos_edad}, Pais: ${pais}, Photo: ${photo}, Pdf: ${pdf}.`);
   }
 }
