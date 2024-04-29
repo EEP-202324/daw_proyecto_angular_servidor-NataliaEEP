@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CuerposInterface } from './cuerposInterface';
 import { HttpClient } from '@angular/common/http';
+import { Peticion } from './peticion';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class CuerposService {
 
   submitApplication(id: string, cuerpo: string, titulacion: string, requisitos_edad: string, pais: string, photo: string, pdf: string) {
     console.log(`Homes application received: Id: ${id}, Cuerpo: ${cuerpo}, Titulacion: ${titulacion}, Requisitos_edad: ${requisitos_edad}, Pais: ${pais}, Photo: ${photo}, Pdf: ${pdf}.`);
+  }
+
+  enviarPeticion(peticion: Peticion) {
+    alert("peticion recibida")
   }
 }

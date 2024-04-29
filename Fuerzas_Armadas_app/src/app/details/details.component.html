@@ -6,19 +6,28 @@
     <h2 class="listing-heading2">{{cuerposLocation?.titulacion}}</h2>
   </section>
   <section class="listing-apply">
-    <h2 class="section-heading">Asignación de cita previa:</h2>
+    <h2 class="section-heading">Añadir Cuerpo:</h2>
     <form [formGroup]="applyForm" (submit)="submitApplication()">
-      <label for="first-name">Nombre</label>
-      <input id="nombre" type="text" formControlName="nombre">
+      <label for="id">Id</label>
+      <input id="id" type="text" formControlName="id">
 
-      <label for="last-name">Apellidos</label>
-      <input id="apellidos" type="text" formControlName="apellidos">
+      <label for="cuerpo">Cuerpo</label>
+      <input id="cuerpo" type="text" formControlName="cuerpo">
 
-      <label for="last-name">Dni</label>
-      <input id="dni" type="text" formControlName="dni">
+      <label for="titulacion">Titulación</label>
+      <input id="titulacion" type="text" formControlName="titulacion">
 
-      <label for="email">Email</label>
-      <input id="email" type="email" formControlName="email">
+      <label for="requisitos_edad">Reaquisitos Edad</label>
+      <input id="requisitos_edad" type="text" formControlName="requisitos_edad">
+
+      <label for="pais">Pais</label>
+      <input id="pais" type="text" formControlName="pais">
+
+      <label for="photo">Foto</label>
+      <input id="photo" type="text" formControlName="photo">
+
+      <label for="pdf">Pdf</label>
+      <input id="pdf" type="text" formControlName="pdf">
       <button type="submit" class="primary">Enviar</button>
     </form>
   </section>
