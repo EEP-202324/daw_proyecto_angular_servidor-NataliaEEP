@@ -1,7 +1,7 @@
 {
   "cuerpos": [
   {
-  "id": 0,
+  "id": "0",
   "cuerpo": "Cuerpos Generales e Infantería de Marina",
   "titulacion": "Titulaciones de grado",
   "requisitos_edad": "Ingreso directo con exigencia previa de titulación de grado universitario: 27 años",
@@ -10,7 +10,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/INTERVENCION.pdf"
   },
   {
-  "id": 1,
+  "id": "1",
   "cuerpo": "Intendencia",
   "titulacion": "Los títulos universitarios oficiales de Grado, en la rama de conocimiento de Ciencias Sociales y Jurídicas vinculados con la Economía, la Empresa y el Derecho",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -19,7 +19,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/INTENDENCIA.pdf"
   },
   {
-  "id": 2,
+  "id": "2",
   "cuerpo": "Ingenieros",
   "titulacion": "Cualquier título universitario oficial",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -28,7 +28,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/CUERPO-DE-INGENIEROS.pdf"
   },
   {
-  "id": 3,
+  "id": "3",
   "cuerpo": "Escala Técnica de Ingenieros",
   "titulacion": "Cualquier título universitario oficial",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -37,7 +37,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/CUERPO-DE-INGENIEROS.pdf"
   },
   {
-  "id": 4,
+  "id": "4",
   "cuerpo": "Jurídico Militar",
   "titulacion": "Titulos de Master, Licenciado o graduado en Derecho",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -46,7 +46,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/JURIDICO.pdf"
   },
   {
-  "id": 5,
+  "id": "5",
   "cuerpo": "Militar de intervención",
   "titulacion": "Titulos universitarios oficiales de Grado, Licenciado o Máster",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -55,7 +55,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/INTERVENCION.pdf"
   },
   {
-  "id": 6,
+  "id": "6",
   "cuerpo": "Militar de sanidad: Especialidad Medicina",
   "titulacion": "Licenciado o Graduado en Medicina",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -64,7 +64,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/MEDICINA-CON-TITULACION.pdf"
   },
   {
-  "id": 7,
+  "id": "7",
   "cuerpo": "Militar de sanidad: Especialidad Psicología",
   "titulacion": "Licenciado o Graduado en Psicología",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -73,7 +73,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/PSICOLOGIA.pdf"
   },
   {
-  "id": 8,
+  "id": "8",
   "cuerpo": "Militar de sanidad: Especialidad Farmacia",
   "titulacion": "Licenciado o Graduado en Farmacia",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -82,7 +82,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/FARMACIA.pdf"
   },
   {
-  "id": 9,
+  "id": "9",
   "cuerpo": "Licenciado o Graduado en Odontología",
   "titulacion": "Licenciado o Graduado en Odontología",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -91,7 +91,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/ODONTOLOGIA.pdf"
   },
   {
-  "id": 10,
+  "id": "10",
   "cuerpo": "Licenciado o Graduado en Veterinaria",
   "titulacion": "Licenciado o Graduado en Veterinaria",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -100,7 +100,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/VETERINARIA.pdf"
   },
   {
-  "id": 11,
+  "id": "11",
   "cuerpo": "Licenciado o Graduado en Enfermería",
   "titulacion": "Diplomado o Graduado en Enfermería",
   "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",
@@ -109,7 +109,7 @@
   "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/ENFERMERIA.pdf"
   },
   {
-    "id": 12,
+    "id": "12",
     "cuerpo": "Músicas Militares",
     "titulacion": "Titulo Superior de Música o Título de Grado en Enseñanzas Artísticas Superiores de Música",
     "requisitos_edad": "Ingreso directo para adquirir la condición de militar de carrera: Desde los 18 años, hasta sin límite de edad máxima",

@@ -34,7 +34,8 @@ export class DetailsComponent {
   });
 
   constructor() {
-    const cuerpoId = parseInt(this.route.snapshot.params['id']);
+
+    const cuerpoId = Number(this.route.snapshot.params['id']);
     this.cuerposService.getCuerpo(cuerpoId).subscribe(
       cuerpo => {
       this.cuerposLocation = cuerpo;
