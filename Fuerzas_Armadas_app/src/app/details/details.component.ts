@@ -53,8 +53,13 @@ export class DetailsComponent {
     );
     const peticion: Peticion = {...(this.applyForm.value)};
     this.cuerposService.enviarPeticion(peticion).subscribe({
-      next: peticion => {alert (peticion.id)},
-      error: error => {alert("ERROR: " + error)}
+      next: peticion => {
+        alert(peticion.id);
+        console.log(peticion)
+      },
+      error: error => {
+        console.log(error)
+      }
   });
   }
 }

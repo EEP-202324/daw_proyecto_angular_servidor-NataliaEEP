@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class CuerposService {
 
   url = 'http://localhost:3000/locations';
-  urlPeticion = 'http://localhost:8080/cuerpo';
+  urlPeticion = 'http://localhost:8080/peticiones';
   constructor(private http: HttpClient) { }
 
   getCuerpos() {
@@ -37,6 +37,10 @@ export class CuerposService {
 
   enviarPeticion(peticion: Peticion) {
     alert("peticion recibida");
-    return this.http.post<Peticion>("urlPendiente", peticion);
+    return this.http.post<Peticion>(this.url, peticion);
+  }
+
+  borrarPeticion(): Observable<Peticion> {
+    return this.http.delete(`${this.url}/c008`);
   }
 }
