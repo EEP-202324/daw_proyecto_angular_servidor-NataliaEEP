@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class CuerposService {
 
-  url = 'http://localhost:3000/locations';
+  url = 'http://localhost:3000/cuerpos';
   urlPeticion = 'http://localhost:8080/peticiones';
   constructor(private http: HttpClient) { }
 
