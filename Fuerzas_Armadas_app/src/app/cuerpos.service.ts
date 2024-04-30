@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class CuerposService {
 
   url = 'http://localhost:3000/cuerpos';
-  urlPeticion = 'http://localhost:8080/peticiones';
+  urlPeticion = 'http://localhost:8080/cuerpo';
   constructor(private http: HttpClient) { }
 
   getCuerpos() {
@@ -31,13 +31,17 @@ export class CuerposService {
   //   return await data.json() ?? {};
   // }
 
-  submitApplication(id: string, cuerpo: string, titulacion: string, requisitos_edad: string, pais: string, photo: string, pdf: string) {
-    console.log(`Homes application received: Id: ${id}, Cuerpo: ${cuerpo}, Titulacion: ${titulacion}, Requisitos_edad: ${requisitos_edad}, Pais: ${pais}, Photo: ${photo}, Pdf: ${pdf}.`);
+  submitApplication(cuerpo: string, titulacion: string, requisitos_edad: string, pais: string, photo: string, pdf: string) {
+    console.log(`Homes application received: Cuerpo: ${cuerpo}, Titulacion: ${titulacion}, Requisitos_edad: ${requisitos_edad}, Pais: ${pais}, Photo: ${photo}, Pdf: ${pdf}.`);
   }
 
   enviarPeticion(peticion: Peticion) {
     alert("peticion recibida");
-    return this.http.post<Peticion>(this.url, peticion);
+    return this.http.post<Peticion>(this.url, peticion); //aqui tiene que mandar cuerpos en vez de peticiones
+  }
+
+  addCuerpos(cuerposDatos: any): Observable<CuerposInterface> {
+    return this.http.post<CuerposInterface>(this.url, cuerposDatos);
   }
 
   borrarPeticion(): Observable<Peticion> {
