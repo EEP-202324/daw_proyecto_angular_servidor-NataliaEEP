@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CuerposInterface } from './cuerposInterface';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Peticion } from './peticion';
 import { Observable } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +90,16 @@ export class CuerposService {
     pdf: cuerpo.pdf
   };
   return this.http.put<CuerposInterface>(urlCuerpo, cuerpoActualizado);
+}
+
+borrarCuerpo(id: number | string): Observable<void> {
+  const deleteUrl = `${this.url}/${id}`;
+  return this.http.delete<void>(deleteUrl)
+    .pipe(
+      catchError((error: HttpErrorResponse) => { // Especifica el tipo del parámetro 'error'
+        throw 'Error al intentar borrar el cuerpo'; // Maneja errores aquí según tu lógica
+      })
+    );
 }
 
   borrarPeticion(): Observable<Peticion> {

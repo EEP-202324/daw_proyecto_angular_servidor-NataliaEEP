@@ -56,3 +56,14 @@ button.secondarySmall {
   padding-right: 70px;
 }
 
+button.borrarSmall {
+  padding: 10px;
+  border: solid 1px var(--link-color);
+  background: var(--link-color);
+  color: white;
+  border-radius: 8px;
+  margin-left: 160px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+

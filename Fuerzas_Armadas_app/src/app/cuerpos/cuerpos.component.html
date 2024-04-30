@@ -3,5 +3,6 @@
   <h2 class="listing-heading">{{ cuerpos.cuerpo }}</h2>
   <p class="listing-location">{{ cuerpos.pais}}</p>
   <a [routerLink]="['/details', cuerpos.id]">Más Info</a>
+  <button type="button" (click)="borrarCuerpo(cuerpos.id)" class="borrarSmall">Borrar Cuerpo</button>
 </section>
 <br>
