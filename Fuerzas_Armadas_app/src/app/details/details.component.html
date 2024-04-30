@@ -23,14 +23,13 @@
         <input id="photo" type="text" formControlName="photo">
         <label for="pdf">Pdf</label>
         <input id="pdf" type="text" formControlName="pdf">
-        <button type="submit" class="primary">Modificar</button>
-        <button *ngIf="mostrarDatos" type="button" (click)="cancelar()" class="secondary">Cancelar</button>
+        <button type="submit" class="primarySmall">Modificar</button>
+        <button *ngIf="mostrarDatos" type="button" (click)="cancelar()" class="secondarySmall">Cancelar</button>
       </div>
     </form>
   </section>
   <section class="listing-features">
     <h2 class="section-heading">Sobre este Cuerpo:</h2>
-    <a href="{{cuerposLocation?.pdf}}" target="_blank">Más Información</a>
-    <embed *ngIf="cuerposLocation?.pdf" [src]="cuerposLocation?.pdf" type="application/pdf" width="100%" height="500px" />
+    <a *ngIf="cuerposLocation?.pdf" [href]="cuerposLocation?.pdf" target="_blank">Más Información</a>
   </section>
 </article>
