@@ -1,0 +1,24 @@
+<section class="listing-apply">
+  <h2 class="section-heading">Añadir Cuerpo:</h2>
+  <form [formGroup]="applyForm" (submit)="enviar()">
+
+    <label for="cuerpo">Cuerpo</label>
+    <input id="cuerpo" type="text" formControlName="cuerpo">
+
+    <label for="titulacion">Titulación</label>
+    <input id="titulacion" type="text" formControlName="titulacion">
+
+    <label for="requisitos_edad">Requisitos Edad</label>
+    <input id="requisitos_edad" type="text" formControlName="requisitos_edad">
+
+    <label for="pais">Pais</label>
+    <input id="pais" type="text" formControlName="pais">
+
+    <label for="photo">Foto</label>
+    <input id="photo" type="text" formControlName="photo">
+
+    <label for="pdf">Pdf</label>
+    <input id="pdf" type="text" formControlName="pdf">
+    <button type="submit" class="primary">Enviar</button>
+  </form>
+</section>
