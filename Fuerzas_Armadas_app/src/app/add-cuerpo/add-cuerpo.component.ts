@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CuerposService } from '../cuerpos.service';
+import { CuerposInterface } from '../cuerposInterface';
+
 
 @Component({
   selector: 'app-add-cuerpo',
@@ -16,7 +18,6 @@ import { CuerposService } from '../cuerpos.service';
 export class AddCuerpoComponent {
 
   applyForm = new FormGroup({
-    id: new FormControl(''),
     cuerpo: new FormControl(''),
     titulacion: new FormControl(''),
     requisitos_edad: new FormControl(''),
@@ -27,7 +28,15 @@ export class AddCuerpoComponent {
   constructor(private cuerposService: CuerposService) {}
 
   enviar() {
-    const cuerpoDatos = this.applyForm.value;
+    const cuerpoDatos: Partial<CuerposInterface> = {
+      cuerpo: this.applyForm.get('cuerpo')?.value ?? '',
+      titulacion: this.applyForm.get('titulacion')?.value ?? '',
+      requisitos_edad: this.applyForm.get('requisitos_edad')?.value ?? '',
+      pais: this.applyForm.get('pais')?.value ?? '',
+      photo: this.applyForm.get('photo')?.value ?? '',
+      pdf: this.applyForm.get('pdf')?.value ?? ''
+
+    };
     this.cuerposService.addCuerpos(cuerpoDatos).subscribe({
       next: cuerpoNuevo => {
         console.log('Nuevo cuerpo creado', cuerpoNuevo);

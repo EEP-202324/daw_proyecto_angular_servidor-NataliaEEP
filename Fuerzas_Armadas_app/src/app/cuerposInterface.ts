@@ -1,5 +1,5 @@
 export interface CuerposInterface {
-  id: number;
+  id: number | string;
   cuerpo: string;
   titulacion: string;
   requisitos_edad: string;

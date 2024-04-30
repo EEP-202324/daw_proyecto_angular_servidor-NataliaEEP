@@ -3,6 +3,7 @@ import { CuerposInterface } from './cuerposInterface';
 import { HttpClient } from '@angular/common/http';
 import { Peticion } from './peticion';
 import { Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,18 +32,63 @@ export class CuerposService {
   //   return await data.json() ?? {};
   // }
 
-  submitApplication(cuerpo: string, titulacion: string, requisitos_edad: string, pais: string, photo: string, pdf: string) {
-    console.log(`Homes application received: Cuerpo: ${cuerpo}, Titulacion: ${titulacion}, Requisitos_edad: ${requisitos_edad}, Pais: ${pais}, Photo: ${photo}, Pdf: ${pdf}.`);
+  // submitApplication(cuerpo: string, titulacion: string, requisitos_edad: string, pais: string, photo: string, pdf: string) {
+  //   console.log(`Homes application received: Cuerpo: ${cuerpo}, Titulacion: ${titulacion}, Requisitos_edad: ${requisitos_edad}, Pais: ${pais}, Photo: ${photo}, Pdf: ${pdf}.`);
+  // }
+
+  // enviarPeticion(peticion: Peticion) {
+  //   alert("peticion recibida");
+  //   return this.http.post<Peticion>(this.url, peticion); //aqui tiene que mandar cuerpos en vez de peticiones
+  // }
+
+  // addCuerpos(cuerposDatos: any): Observable<CuerposInterface> {
+  //   return this.http.post<CuerposInterface>(this.url, cuerposDatos);
+  // }
+
+  getMaxId(): Observable<number> {
+    return this.getCuerpos().pipe(
+      map(cuerpos => {
+        const ids: number[] = cuerpos.map(cuerpo => typeof cuerpo.id === 'string' ? parseInt(cuerpo.id) : cuerpo.id);
+        return Math.max(...ids);
+      })
+    );
   }
 
-  enviarPeticion(peticion: Peticion) {
-    alert("peticion recibida");
-    return this.http.post<Peticion>(this.url, peticion); //aqui tiene que mandar cuerpos en vez de peticiones
+  addCuerpos(cuerposDatos: Partial<CuerposInterface>): Observable<CuerposInterface> {
+    return this.getMaxId().pipe(
+      switchMap(maxId => {
+        const nuevoId = maxId + 1;
+        const nuevoCuerpo: CuerposInterface = {
+          id: String(nuevoId),
+          cuerpo: cuerposDatos.cuerpo || '',
+          titulacion: cuerposDatos.titulacion || '',
+          requisitos_edad: cuerposDatos.requisitos_edad || '',
+          pais: cuerposDatos.pais || '',
+          photo: cuerposDatos.photo || '',
+          pdf: cuerposDatos.pdf || ''
+        };
+        return this.http.post<CuerposInterface>(this.url, nuevoCuerpo);
+      })
+    );
   }
 
-  addCuerpos(cuerposDatos: any): Observable<CuerposInterface> {
-    return this.http.post<CuerposInterface>(this.url, cuerposDatos);
-  }
+  // modificarCuerpo(cuerpo: CuerposInterface): Observable<CuerposInterface> {
+  //   const urlCuerpo = `${this.url}/${cuerpo.id}`;
+  //   return this.http.put<CuerposInterface>(urlCuerpo, cuerpo);
+  // }
+  modificarCuerpo(cuerpo: CuerposInterface): Observable<CuerposInterface> {
+  const urlCuerpo = `${this.url}/${cuerpo.id}`;
+  const cuerpoActualizado = {
+    id: cuerpo.id,
+    cuerpo: cuerpo.cuerpo,
+    titulacion: cuerpo.titulacion,
+    requisitos_edad: cuerpo.requisitos_edad,
+    pais: cuerpo.pais,
+    photo: cuerpo.photo,
+    pdf: cuerpo.pdf
+  };
+  return this.http.put<CuerposInterface>(urlCuerpo, cuerpoActualizado);
+}
 
   borrarPeticion(): Observable<Peticion> {
     return this.http.delete(`${this.url}/c008`);
