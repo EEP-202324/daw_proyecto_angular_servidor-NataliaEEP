@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { CuerposService } from '../cuerpos.service';
-import { Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-add-cuerpo',
@@ -17,6 +16,7 @@ import { Validator } from '@angular/forms';
 export class AddCuerpoComponent {
 
   applyForm = new FormGroup({
+    id: new FormControl(''),
     cuerpo: new FormControl(''),
     titulacion: new FormControl(''),
     requisitos_edad: new FormControl(''),
@@ -26,17 +26,17 @@ export class AddCuerpoComponent {
   });
   constructor(private cuerposService: CuerposService) {}
 
-  enviar () {
+  enviar() {
     const cuerpoDatos = this.applyForm.value;
-    this.cuerposService.addCuerpos(cuerpoDatos).subscribe(
-      cuerpoNuevo =>{
+    this.cuerposService.addCuerpos(cuerpoDatos).subscribe({
+      next: cuerpoNuevo => {
         console.log('Nuevo cuerpo creado', cuerpoNuevo);
         alert('Nuevo cuerpo creado');
       },
-      error => {
-        console.log('Error al agregar el cuerpo', error)
-        alert('Ha ocurrido un error al agregar el cuerpo')
+      error: error => {
+        console.log('Error al agregar el cuerpo', error);
+        alert('Ha ocurrido un error al agregar el cuerpo');
       }
-    );
+    });
   }
 }
