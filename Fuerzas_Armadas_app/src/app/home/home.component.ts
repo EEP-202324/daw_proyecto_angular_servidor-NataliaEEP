@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { CuerposInterface } from '../cuerposInterface';
 import { CuerposService } from '../cuerpos.service';
 import { of } from 'rxjs';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    CuerposComponent
+    CuerposComponent,
+    RouterModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

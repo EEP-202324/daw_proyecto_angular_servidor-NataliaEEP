@@ -1,8 +1,10 @@
 <section>
   <form>
     <input type="text" placeholder="Filtrar por Cuerpo" #filter>
-    <button class="primary" type="button" (click)="filterResults(filter.value)">Search</button>
+    <button class="primary" type="button" (click)="filterResults(filter.value)">Buscar</button>
   </form>
+  <br>
+  <a [routerLink]="['/add-cuerpo']"><button class="addCuerpo" type="button">Añadir Cuerpo</button></a>
 </section>
 <section class="results">
   <app-cuerpos
