@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CuerposInterface } from '../cuerposInterface';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { CuerposService } from '../cuerpos.service'; // Importa tu servicio
+import { CuerposService } from '../cuerpos.service';
 
 @Component({
   selector: 'app-cuerpos',
@@ -13,15 +13,16 @@ import { CuerposService } from '../cuerpos.service'; // Importa tu servicio
 })
 export class CuerposComponent {
   @Input() cuerpos!: CuerposInterface;
-  constructor(private cuerposService: CuerposService) {} // Inyecta el servicio
+  constructor(private cuerposService: CuerposService) {}
 
   borrarCuerpo(id: number | string) {
-    this.cuerposService.borrarCuerpo(id).subscribe(() => {
-      console.log(`Cuerpo con ID ${id} borrado exitosamente.`);
-      // Aquí puedes manejar cualquier otra lógica después de borrar el cuerpo, como recargar la lista de cuerpos, etc.
-    }, error => {
-      console.error('Error al intentar borrar el cuerpo:', error);
+    this.cuerposService.borrarCuerpo(id).subscribe({
+      next: () => {
+        console.log(`Cuerpo con ID ${id} borrado exitosamente.`);
+      },
+      error: error => {
+        console.error('Error al intentar borrar el cuerpo:', error);
+      }
     });
   }
-
 }
