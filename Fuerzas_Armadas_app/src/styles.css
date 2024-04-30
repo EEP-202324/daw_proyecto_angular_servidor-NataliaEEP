@@ -21,4 +21,17 @@ button.primary {
   background: var(--primary-color);
   color: white;
   border-radius: 8px;
+  padding-left: 100px;
+  padding-right: 100px;
 }
+
+button.secondary {
+  padding: 10px;
+  border: solid 1px var(--link-color);
+  background: var(--link-color);
+  color: white;
+  border-radius: 8px;
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
