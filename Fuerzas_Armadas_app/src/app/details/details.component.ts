@@ -24,7 +24,6 @@ export class DetailsComponent {
   cuerposLocation: CuerposInterface | undefined;
 
   applyForm = new FormGroup({
-    id: new FormControl(''),
     cuerpo: new FormControl(''),
     titulacion: new FormControl(''),
     requisitos_edad: new FormControl(''),
@@ -44,7 +43,6 @@ export class DetailsComponent {
 
   submitApplication() {
     this.cuerposService.submitApplication(
-      this.applyForm.value.id ?? '',
       this.applyForm.value.cuerpo ?? '',
       this.applyForm.value.titulacion ?? '',
       this.applyForm.value.requisitos_edad ?? '',

@@ -6,10 +6,8 @@
     <h2 class="listing-heading2">{{cuerposLocation?.titulacion}}</h2>
   </section>
   <section class="listing-apply">
-    <h2 class="section-heading">Añadir Cuerpo:</h2>
+    <h2 class="section-heading">Modificar Cuerpo:</h2>
     <form [formGroup]="applyForm" (submit)="submitApplication()">
-      <label for="id">Id</label>
-      <input id="id" type="text" formControlName="id">
 
       <label for="cuerpo">Cuerpo</label>
       <input id="cuerpo" type="text" formControlName="cuerpo">
@@ -17,7 +15,7 @@
       <label for="titulacion">Titulación</label>
       <input id="titulacion" type="text" formControlName="titulacion">
 
-      <label for="requisitos_edad">Reaquisitos Edad</label>
+      <label for="requisitos_edad">Requisitos Edad</label>
       <input id="requisitos_edad" type="text" formControlName="requisitos_edad">
 
       <label for="pais">Pais</label>
@@ -28,7 +26,7 @@
 
       <label for="pdf">Pdf</label>
       <input id="pdf" type="text" formControlName="pdf">
-      <button type="submit" class="primary">Enviar</button>
+      <button type="submit" class="primary">Modificar</button>
     </form>
   </section>
   <section class="listing-features">
