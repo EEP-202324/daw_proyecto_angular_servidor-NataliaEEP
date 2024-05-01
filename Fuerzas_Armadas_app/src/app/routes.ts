@@ -7,17 +7,17 @@ const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Home page'
+    title: 'Fuerzas Armadas'
   },
   {
     path: 'details/:id',
     component: DetailsComponent,
-    title: 'Home details'
+    title: 'Cuerpo FA'
   },
   {
     path: 'add-cuerpo',
     component: AddCuerpoComponent,
-    title: 'Add Cuerpo'
+    title: 'Añadir Cuerpo FA'
   }
 ];
 
