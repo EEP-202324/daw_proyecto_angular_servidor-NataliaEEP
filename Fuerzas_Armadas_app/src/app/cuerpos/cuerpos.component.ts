@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CuerposInterface } from '../cuerposInterface';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CuerposService } from '../cuerpos.service';
@@ -18,7 +17,7 @@ export class CuerposComponent {
   borrarCuerpo(id: number | string) {
     this.cuerposService.borrarCuerpo(id).subscribe({
       next: () => {
-        console.log(`Cuerpo con ID ${id} borrado exitosamente.`);
+        alert(`El cuerpo "${this.cuerpos.cuerpo}" ha sido borrado.`);
       },
       error: error => {
         console.error('Error al intentar borrar el cuerpo:', error);

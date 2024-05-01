@@ -3,8 +3,7 @@ import { CuerposInterface } from './cuerposInterface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Peticion } from './peticion';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
-import { catchError } from 'rxjs/operators';
+import { map, switchMap, catchError } from 'rxjs/operators';
 
 
 @Injectable({
