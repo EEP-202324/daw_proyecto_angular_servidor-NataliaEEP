@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CuerposService } from '../cuerpos.service';
 import { CuerposInterface } from '../cuerposInterface';

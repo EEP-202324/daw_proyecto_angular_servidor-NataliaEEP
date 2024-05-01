@@ -57,6 +57,10 @@ section.listing-features a {
   color: var(--link-color);
 }
 
+section.listing-features a:hover {
+  color: #fc6100;
+}
+
 label, input {
   display: block;
 }
@@ -76,6 +80,7 @@ input {
   border-left: none;
   border-bottom: solid .3px;
 }
+
 @media (max-width: 1024px) {
   .listing-photo {
     width: 100%;
