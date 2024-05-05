@@ -1,5 +1,7 @@
 package com.example.cuerpo;
 
+import java.util.Objects;
+
 public class Cuerpo {
 	
 	private int id;
@@ -61,5 +63,30 @@ public class Cuerpo {
 	}
 	public void setPdf(String pdf) {
 		this.pdf = pdf;
+	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cuerpo cuerpo = (Cuerpo) o;
+        return id == cuerpo.id &&
+                Objects.equals(this.cuerpo, cuerpo.cuerpo) &&
+                Objects.equals(titulacion, cuerpo.titulacion) &&
+                Objects.equals(requisitos_edad, cuerpo.requisitos_edad) &&
+                Objects.equals(pais, cuerpo.pais) &&
+                Objects.equals(photo, cuerpo.photo) &&
+                Objects.equals(pdf, cuerpo.pdf);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, cuerpo, titulacion, requisitos_edad, pais, photo, pdf);
+    }
+
+	@Override
+	public String toString() {
+		return String.format("Cuerpo [id=%s, cuerpo=%s, titulacion=%s, requisitos_edad=%s, pais=%s, photo=%s, pdf=%s]",
+				id, cuerpo, titulacion, requisitos_edad, pais, photo, pdf);
 	}
 }
