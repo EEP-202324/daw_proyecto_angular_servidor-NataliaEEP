@@ -49,4 +49,12 @@ class CuerpoApplicationTests {
         String pdf = documentContext.read("$.pdf");
         assertThat(pdf).isEqualTo("https://www.secnav.navy.mil/doni/US%20Navy%20Regulations/index.pdf");
     }
+    
+    @Test
+    void shouldNotReturnACuerpoWithAnUnknownId() {
+      ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos/1000", String.class);
+
+      assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+      assertThat(response.getBody()).isBlank();
+    }
 }
