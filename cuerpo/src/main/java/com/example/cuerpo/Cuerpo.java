@@ -13,7 +13,8 @@ public class Cuerpo {
 	private String photo;
 	private String pdf;
 	
-	public Cuerpo (Long id, String cuerpo, String titulacion, String requisitos_edad, String pais, String photo, String pdf) {
+	public Cuerpo (Long id, String cuerpo, String titulacion, String requisitos_edad,
+			String pais, String photo, String pdf) {
 		this.id = id;
 		this.cuerpo = cuerpo;
 		this.titulacion = titulacion;
