@@ -1,10 +1,11 @@
 package com.example.cuerpo;
 
-import java.util.Objects;
+import org.springframework.data.annotation.Id;
 
 public class Cuerpo {
 	
-	private int id;
+	@Id 
+	private Long id;
 	private String cuerpo;
 	private String titulacion;
 	private String requisitos_edad;
@@ -12,7 +13,7 @@ public class Cuerpo {
 	private String photo;
 	private String pdf;
 	
-	public Cuerpo (int id, String cuerpo, String titulacion, String requisitos_edad, String pais, String photo, String pdf) {
+	public Cuerpo (Long id, String cuerpo, String titulacion, String requisitos_edad, String pais, String photo, String pdf) {
 		this.id = id;
 		this.cuerpo = cuerpo;
 		this.titulacion = titulacion;
@@ -22,10 +23,10 @@ public class Cuerpo {
 		this.pdf = pdf;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getCuerpo() {
