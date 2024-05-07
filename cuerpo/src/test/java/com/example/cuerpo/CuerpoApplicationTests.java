@@ -165,4 +165,10 @@ class CuerpoApplicationTests {
 	     ResponseEntity<String> getResponse = restTemplate.getForEntity("/cuerpos/99", String.class);
 	     assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	 }
+	 
+	 @Test
+	 void shouldNotDeleteACuerpoThatDoesNotExist() {
+	     ResponseEntity<Void> deleteResponse = restTemplate.exchange("/cuerpos/99999", HttpMethod.DELETE, null, Void.class);
+	     assertThat(deleteResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+	 }
 }
