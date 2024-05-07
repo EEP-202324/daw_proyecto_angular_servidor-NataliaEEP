@@ -60,7 +60,11 @@ class CuerpoController {
 	
 	@DeleteMapping("/{id}")
 	private ResponseEntity<Void> deleteCuerpo(@PathVariable Long id) {
-		cuerpoRepository.deleteById(id);
-	    return ResponseEntity.noContent().build();
+	    if (cuerpoRepository.existsById(id)) {
+	        cuerpoRepository.deleteById(id);
+	        return ResponseEntity.noContent().build();
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 }
