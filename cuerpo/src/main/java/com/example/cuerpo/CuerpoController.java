@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,7 +53,7 @@ class CuerpoController {
 	            PageRequest.of(
 	                    pageable.getPageNumber(),
 	                    pageable.getPageSize(),
-	                    pageable.getSort()
+	                    pageable.getSortOr(Sort.by(Sort.Direction.ASC, "cuerpo"))
 	    ));
 	    return ResponseEntity.ok(page.getContent());
 	}
