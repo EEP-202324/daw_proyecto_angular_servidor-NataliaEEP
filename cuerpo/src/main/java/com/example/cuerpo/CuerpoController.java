@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,16 +38,6 @@ class CuerpoController {
 	    }
 	}
 	
-	@PostMapping
-	private ResponseEntity<Void> createCuerpo(@RequestBody Cuerpo newCuerpoRequest, UriComponentsBuilder ucb) {
-	   Cuerpo savedCuerpo = cuerpoRepository.save(newCuerpoRequest);
-	   URI locationOfNewCuerpo = ucb
-	            .path("cuerpos/{id}")
-	            .buildAndExpand(savedCuerpo.getId())
-	            .toUri();
-	   return ResponseEntity.created(locationOfNewCuerpo).build();
-	}
-	
 	@GetMapping
 	private ResponseEntity<List<Cuerpo>> findAll(Pageable pageable) {
 	    Page<Cuerpo> page = cuerpoRepository.findAll(
@@ -58,6 +49,33 @@ class CuerpoController {
 	    return ResponseEntity.ok(page.getContent());
 	}
 	
+	@PostMapping
+	private ResponseEntity<Void> createCuerpo(@RequestBody Cuerpo newCuerpoRequest, UriComponentsBuilder ucb) {
+	   Cuerpo savedCuerpo = cuerpoRepository.save(newCuerpoRequest);
+	   URI locationOfNewCuerpo = ucb
+	            .path("cuerpos/{id}")
+	            .buildAndExpand(savedCuerpo.getId())
+	            .toUri();
+	   return ResponseEntity.created(locationOfNewCuerpo).build();
+	}
+	
+	@PutMapping("/{requestedId}")
+	private ResponseEntity<Void> putCuerpo(@PathVariable Long requestedId, @RequestBody Cuerpo cuerpoUpdate) {
+	    Optional<Cuerpo> cuerpoOptional = cuerpoRepository.findById(requestedId);
+	    if (cuerpoOptional.isPresent()) {
+	        Cuerpo existingCuerpo = cuerpoOptional.get();
+	        existingCuerpo.setCuerpo(cuerpoUpdate.getCuerpo());
+	        existingCuerpo.setTitulacion(cuerpoUpdate.getTitulacion());
+	        existingCuerpo.setRequisitos_edad(cuerpoUpdate.getRequisitos_edad());
+	        existingCuerpo.setPais(cuerpoUpdate.getPais());
+	        existingCuerpo.setPhoto(cuerpoUpdate.getPhoto());
+	        existingCuerpo.setPdf(cuerpoUpdate.getPdf());
+	        cuerpoRepository.save(existingCuerpo);
+	        return ResponseEntity.noContent().build();
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
 	
 	@DeleteMapping("/{id}")
 	private ResponseEntity<Void> deleteCuerpo(@PathVariable Long id) {
