@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
 
+import org.assertj.core.util.Arrays;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.JsonTest;
@@ -14,6 +16,27 @@ class CuerpoJsonTest {
 	
     @Autowired
     private JacksonTester<Cuerpo> json;
+    
+    @Autowired
+    private JacksonTester<Cuerpo[]> jsonList;
+
+    private Cuerpo[] cuerpos;
+
+    @BeforeEach
+    void setUp() {
+        cuerpos = Arrays.array(
+            new Cuerpo(99L, "Navy", "Titulacion Universitaria", "37 años maximo", "USA", 
+                       "https://media.defense.gov/2021/Jan/14/2002564966/1460/1280/0/210111-N-IE405-1204.JPG", 
+                       "https://www.secnav.navy.mil/doni/US%20Navy%20Regulations/index.pdf"),
+            new Cuerpo(100L, "Army", "Otra Titulacion", "40 años maximo", "UK", 
+                       "https://media.defense.gov/2021/Jan/14/2002564966/1460/1280/0/210111-N-IE405-1204.JPG", 
+                       "https://www.army.mil/pdf/Army_Regulations.pdf"),
+            new Cuerpo(101L, "Air Force", "Licenciatura en Aeronáutica", "35 años máximo", "USA", 
+                       "https://www.airforce.com.br/images/noticias/origem-da-forca-aerea-brasileira.jpg", 
+                       "https://www.airforce.com.br/pdf/airforce_regulations.pdf")
+        );
+    }
+
 
     @Test
     void cuerpoSerializationTest() throws IOException {
