@@ -140,4 +140,17 @@ class CuerpoApplicationTests {
 	     JSONArray page = documentContext.read("$[*]");
 	     assertThat(page.size()).isEqualTo(1);
 	 }
+	 
+	 @Test
+	 void shouldReturnASortedPageOfCuerpos() {
+	     ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos?page=0&size=1&sort=cuerpo,asc", String.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	     DocumentContext documentContext = JsonPath.parse(response.getBody());
+	     JSONArray read = documentContext.read("$[*]");
+	     assertThat(read.size()).isEqualTo(1);
+
+	     String cuerpo = documentContext.read("$[0].cuerpo");
+	     assertThat(cuerpo).isEqualTo("Air Force");
+	 }
 }
