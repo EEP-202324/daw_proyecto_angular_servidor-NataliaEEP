@@ -1,8 +1,12 @@
 package com.example.cuerpo;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +45,13 @@ class CuerpoController {
 	   return ResponseEntity.created(locationOfNewCuerpo).build();
 	}
 	
-	@GetMapping()
-	private ResponseEntity<Iterable<Cuerpo>> findAll() {
-	   return ResponseEntity.ok(cuerpoRepository.findAll());
+	@GetMapping
+	private ResponseEntity<List<Cuerpo>> findAll(Pageable pageable) {
+	    Page<Cuerpo> page = cuerpoRepository.findAll(
+	            PageRequest.of(
+	                    pageable.getPageNumber(),
+	                    pageable.getPageSize()
+	    ));
+	    return ResponseEntity.ok(page.getContent());
 	}
 }
