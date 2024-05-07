@@ -154,6 +154,19 @@ class CuerpoApplicationTests {
 	     assertThat(cuerpo).isEqualTo("Air Force");
 	 }
 	 
+	 @Test
+	 void shouldReturnASortedPageOfCuerposWithNoParametersAndUseDefaultValues() {
+	     ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos", String.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+	     DocumentContext documentContext = JsonPath.parse(response.getBody());
+	     JSONArray page = documentContext.read("$[*]");
+	     assertThat(page.size()).isEqualTo(3);
+
+	     JSONArray cuerpos = documentContext.read("$..cuerpo");
+	     assertThat(cuerpos).containsExactly("Air Force", "Army", "Navy");
+	 }
+	 
 	 
 	 
 	 @Test
