@@ -10,11 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
 
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@DirtiesContext(classMode = ClassMode.AFTER_EACH_TEST_METHOD)
 class CuerpoApplicationTests {
 
 	@Autowired
@@ -59,6 +62,7 @@ class CuerpoApplicationTests {
 	}
 
 	@Test
+	//@DirtiesContext	
 	void shouldCreateANewCuerpo() {
 		Cuerpo newCuerpo = new Cuerpo(44L, "Navy", "Titulacion Universitaria", "37 años maximo", "USA",
 				"https://media.defense.gov/2021/Jan/14/2002564966/1460/1280/0/210111-N-IE405-1204.JPG",
