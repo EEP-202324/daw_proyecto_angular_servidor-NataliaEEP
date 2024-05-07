@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -167,7 +168,31 @@ class CuerpoApplicationTests {
 	     assertThat(cuerpos).containsExactly("Air Force", "Army", "Navy");
 	 }
 	 
-	 
+	 @Test
+	 @DirtiesContext
+	 void shouldUpdateAnExistingCuerpo() {
+	     // Paso 1: Actualizar el cuerpo con los datos deseados
+	     Cuerpo cuerpoUpdate = new Cuerpo(null, "Parachutes", "Nueva titulacion", "Nuevos requisitos", "Nuevo pais", "Nueva photo", "Nuevo pdf");
+	     HttpEntity<Cuerpo> request = new HttpEntity<>(cuerpoUpdate);
+	     ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/99", HttpMethod.PUT, request, Void.class);
+	     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+	     
+	     // Paso 2: Verificar que la actualización se realizó correctamente
+	     // Paso 3: Recuperar el cuerpo actualizado y verificar los datos
+	     ResponseEntity<Cuerpo> getResponse = restTemplate.getForEntity("/cuerpos/99", Cuerpo.class);
+	     assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
+	     Cuerpo updatedCuerpo = getResponse.getBody();
+	     assertThat(updatedCuerpo).isNotNull();
+	     assertThat(updatedCuerpo.getId()).isEqualTo(99L);
+	     assertThat(updatedCuerpo.getCuerpo()).isEqualTo("Parachutes");
+	     assertThat(updatedCuerpo.getTitulacion()).isEqualTo("Nueva titulacion");
+	     assertThat(updatedCuerpo.getRequisitos_edad()).isEqualTo("Nuevos requisitos");
+	     assertThat(updatedCuerpo.getPais()).isEqualTo("Nuevo pais");
+	     assertThat(updatedCuerpo.getPhoto()).isEqualTo("Nueva photo");
+	     assertThat(updatedCuerpo.getPdf()).isEqualTo("Nuevo pdf");
+	 }
+
+
 	 
 	 @Test
 	 @DirtiesContext
