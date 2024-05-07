@@ -50,7 +50,8 @@ class CuerpoController {
 	    Page<Cuerpo> page = cuerpoRepository.findAll(
 	            PageRequest.of(
 	                    pageable.getPageNumber(),
-	                    pageable.getPageSize()
+	                    pageable.getPageSize(),
+	                    pageable.getSort()
 	    ));
 	    return ResponseEntity.ok(page.getContent());
 	}
