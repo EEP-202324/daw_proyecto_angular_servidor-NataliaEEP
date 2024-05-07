@@ -40,4 +40,9 @@ class CuerpoController {
 	            .toUri();
 	   return ResponseEntity.created(locationOfNewCuerpo).build();
 	}
+	
+	@GetMapping()
+	private ResponseEntity<Iterable<Cuerpo>> findAll() {
+	   return ResponseEntity.ok(cuerpoRepository.findAll());
+	}
 }
