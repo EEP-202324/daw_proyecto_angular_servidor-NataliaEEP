@@ -21,6 +21,9 @@ class CuerpoApplicationTests {
 
 	@Autowired
 	TestRestTemplate restTemplate;
+	
+	@Autowired
+    private CuerpoRepository cuerpoRepository;
 
 	@Test
 	void shouldReturnACuerpoWhenDataIsSaved() {
@@ -189,16 +192,28 @@ class CuerpoApplicationTests {
 		assertThat(updatedCuerpo.getPhoto()).isEqualTo("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/SCIE_T10_image1.jpg/450px-SCIE_T10_image1.jpg");
 		assertThat(updatedCuerpo.getPdf()).isEqualTo("https://www.moore.army.mil/Infantry/ARTB/1-507th/content/pdf/TC%203-21.220,%20Parachutes%2021%20Dec%202017.pdf");
 	}
+	
+    @Test
+    @DirtiesContext
+    void shouldDeleteAnExistingCuerpo() {
+        Iterable<Cuerpo> cuerpos = cuerpoRepository.findAll();
+        Long idToDelete;
 
-	@Test
-	@DirtiesContext
-	void shouldDeleteAnExistingCuerpo() {
-		ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/99", HttpMethod.DELETE, null, Void.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        if (cuerpos.iterator().hasNext()) {
+            idToDelete = cuerpos.iterator().next().getId();
+        } else {
+            Cuerpo nuevoCuerpo = new Cuerpo();
+            cuerpoRepository.save(nuevoCuerpo);
+            idToDelete = nuevoCuerpo.getId();
+        }
 
-		ResponseEntity<String> getResponse = restTemplate.getForEntity("/cuerpos/99", String.class);
-		assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
-	}
+        ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/" + idToDelete, HttpMethod.DELETE, null, Void.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+
+        ResponseEntity<String> getResponse = restTemplate.getForEntity("/cuerpos/" + idToDelete, String.class);
+        assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+    }
+
 
 	@Test
 	void shouldNotDeleteACuerpoThatDoesNotExist() {
