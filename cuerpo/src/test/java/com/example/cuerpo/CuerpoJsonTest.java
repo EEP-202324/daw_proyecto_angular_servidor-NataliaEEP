@@ -72,7 +72,7 @@ class CuerpoJsonTest {
 	}
 
 	@Test
-	void cashCardListSerializationTest() throws IOException {
+	void cuerpoListSerializationTest() throws IOException {
 		assertThat(jsonList.write(cuerpos)).isStrictlyEqualToJson("/example/cuerpo/list.json");
 	}
 

@@ -1,10 +1,15 @@
 package com.example.cuerpo;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
+@Entity
 public class Cuerpo {
 
-	@Id
+//	@Id
+	@jakarta.persistence.Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String cuerpo;
 	private String titulacion;
@@ -12,6 +17,10 @@ public class Cuerpo {
 	private String pais;
 	private String photo;
 	private String pdf;
+	
+	public Cuerpo() {
+		
+	}
 
 	public Cuerpo(Long id, String cuerpo, String titulacion, String requisitos_edad, String pais, String photo,
 			String pdf) {
