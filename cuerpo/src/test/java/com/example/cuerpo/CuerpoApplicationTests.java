@@ -171,8 +171,9 @@ class CuerpoApplicationTests {
 	@Test
 	@DirtiesContext
 	void shouldUpdateAnExistingCuerpo() {
-		Cuerpo cuerpoUpdate = new Cuerpo(null, "Parachutes", "Nueva titulacion", "Nuevos requisitos", "Nuevo pais",
-				"Nueva photo", "Nuevo pdf");
+		Cuerpo cuerpoUpdate = new Cuerpo(null, "Parachutes", "Titulacion universitaria", "30 años maximo", "USA",
+				"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/SCIE_T10_image1.jpg/450px-SCIE_T10_image1.jpg", 
+				"https://www.moore.army.mil/Infantry/ARTB/1-507th/content/pdf/TC%203-21.220,%20Parachutes%2021%20Dec%202017.pdf");
 		HttpEntity<Cuerpo> request = new HttpEntity<>(cuerpoUpdate);
 		ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/99", HttpMethod.PUT, request, Void.class);
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
@@ -182,11 +183,11 @@ class CuerpoApplicationTests {
 		assertThat(updatedCuerpo).isNotNull();
 		assertThat(updatedCuerpo.getId()).isEqualTo(99L);
 		assertThat(updatedCuerpo.getCuerpo()).isEqualTo("Parachutes");
-		assertThat(updatedCuerpo.getTitulacion()).isEqualTo("Nueva titulacion");
-		assertThat(updatedCuerpo.getRequisitos_edad()).isEqualTo("Nuevos requisitos");
-		assertThat(updatedCuerpo.getPais()).isEqualTo("Nuevo pais");
-		assertThat(updatedCuerpo.getPhoto()).isEqualTo("Nueva photo");
-		assertThat(updatedCuerpo.getPdf()).isEqualTo("Nuevo pdf");
+		assertThat(updatedCuerpo.getTitulacion()).isEqualTo("Titulacion universitaria");
+		assertThat(updatedCuerpo.getRequisitos_edad()).isEqualTo("30 años maximo");
+		assertThat(updatedCuerpo.getPais()).isEqualTo("USA");
+		assertThat(updatedCuerpo.getPhoto()).isEqualTo("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/SCIE_T10_image1.jpg/450px-SCIE_T10_image1.jpg");
+		assertThat(updatedCuerpo.getPdf()).isEqualTo("https://www.moore.army.mil/Infantry/ARTB/1-507th/content/pdf/TC%203-21.220,%20Parachutes%2021%20Dec%202017.pdf");
 	}
 
 	@Test
