@@ -133,30 +133,31 @@ class CuerpoApplicationTests {
 				"https://www.army.mil/pdf/Army_Regulations.pdf",
 				"https://www.airforce.com.br/pdf/airforce_regulations.pdf");
 	}
-
+	
 	@Test
 	void shouldReturnAPageOfCuerpos() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos?page=0&size=1", String.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+	    ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos?page=0&size=1", String.class);
+	    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-		DocumentContext documentContext = JsonPath.parse(response.getBody());
-		JSONArray page = documentContext.read("$[*]");
-		assertThat(page.size()).isEqualTo(1);
+	    DocumentContext documentContext = JsonPath.parse(response.getBody());
+	    JSONArray page = documentContext.read("$.content");
+	    assertThat(page.size()).isEqualTo(1);
 	}
-
+	
 	@Test
 	void shouldReturnASortedPageOfCuerpos() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos?page=0&size=1&sort=cuerpo,asc",
-				String.class);
-		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+	    ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos?page=0&size=1&sort=cuerpo,asc",
+	    		String.class);
+	    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-		DocumentContext documentContext = JsonPath.parse(response.getBody());
-		JSONArray read = documentContext.read("$[*]");
-		assertThat(read.size()).isEqualTo(1);
+	    DocumentContext documentContext = JsonPath.parse(response.getBody());
+	    JSONArray page = documentContext.read("$.content");
+	    assertThat(page.size()).isEqualTo(1);
 
-		String cuerpo = documentContext.read("$[0].cuerpo");
-		assertThat(cuerpo).isEqualTo("Air Force");
+	    String cuerpo = documentContext.read("$.content[0].cuerpo");
+	    assertThat(cuerpo).isEqualTo("Air Force");
 	}
+
 
 	@Test
 	void shouldReturnASortedPageOfCuerposWithNoParametersAndUseDefaultValues() {
@@ -171,27 +172,6 @@ class CuerpoApplicationTests {
 		assertThat(cuerpos).containsExactly("Air Force", "Army", "Navy");
 	}
 
-//	@Test
-//	@DirtiesContext
-//	void shouldUpdateAnExistingCuerpo() {
-//		Cuerpo cuerpoUpdate = new Cuerpo(null, "Parachutes", "Titulacion universitaria", "30 años maximo", "USA",
-//				"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/SCIE_T10_image1.jpg/450px-SCIE_T10_image1.jpg", 
-//				"https://www.moore.army.mil/Infantry/ARTB/1-507th/content/pdf/TC%203-21.220,%20Parachutes%2021%20Dec%202017.pdf");
-//		HttpEntity<Cuerpo> request = new HttpEntity<>(cuerpoUpdate);
-//		ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/702", HttpMethod.PUT, request, Void.class);
-//		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
-//		ResponseEntity<Cuerpo> getResponse = restTemplate.getForEntity("/cuerpos/702", Cuerpo.class);
-//		assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
-//		Cuerpo updatedCuerpo = getResponse.getBody();
-//		assertThat(updatedCuerpo).isNotNull();
-//		assertThat(updatedCuerpo.getId()).isEqualTo(702L);
-//		assertThat(updatedCuerpo.getCuerpo()).isEqualTo("Parachutes");
-//		assertThat(updatedCuerpo.getTitulacion()).isEqualTo("Titulacion universitaria");
-//		assertThat(updatedCuerpo.getRequisitos_edad()).isEqualTo("30 años maximo");
-//		assertThat(updatedCuerpo.getPais()).isEqualTo("USA");
-//		assertThat(updatedCuerpo.getPhoto()).isEqualTo("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/SCIE_T10_image1.jpg/450px-SCIE_T10_image1.jpg");
-//		assertThat(updatedCuerpo.getPdf()).isEqualTo("https://www.moore.army.mil/Infantry/ARTB/1-507th/content/pdf/TC%203-21.220,%20Parachutes%2021%20Dec%202017.pdf");
-//	}
     @Test
     @DirtiesContext
     void shouldUpdateAnExistingCuerpo() {
