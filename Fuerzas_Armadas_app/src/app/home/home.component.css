@@ -33,6 +33,19 @@ button {
   border-radius: 8px;
 }
 
+.buttonPrev {
+  margin-right: 20px;
+}
+
+.pages {
+  display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-content: flex-end;
+  margin-right: 100px;
+
+}
+
 .addCuerpo {
   margin-left: 100px;
   padding-left: 100px;

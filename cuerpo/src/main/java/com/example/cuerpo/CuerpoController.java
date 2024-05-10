@@ -41,10 +41,10 @@ class CuerpoController {
 	}
 
 	@GetMapping
-	private ResponseEntity<List<Cuerpo>> findAll(Pageable pageable) {
+	private ResponseEntity<Page> findAll(Pageable pageable) {
 		Page<Cuerpo> page = cuerpoRepository.findAll(PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
 				pageable.getSortOr(Sort.by(Sort.Direction.ASC, "cuerpo"))));
-		return ResponseEntity.ok(page.getContent());
+		return ResponseEntity.ok(page);
 	}
 
 	@PostMapping

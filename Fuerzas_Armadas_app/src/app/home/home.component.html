@@ -6,6 +6,15 @@
   <br>
   <a [routerLink]="['/add-cuerpo']"><button class="addCuerpo" type="button">Añadir Cuerpo</button></a>
 </section>
+<section class="pages">
+  Página {{ pageNumber + 1 }} de {{ totalPages }}
+</section>
+<br>
+<section class="pages">
+  <button (click)="previousPage()" [disabled]="pageNumber === 0" class="buttonPrev">Página Anterior</button>
+
+  <button (click)="nextPage()" [disabled]="pageNumber === totalPages - 1">Página Siguiente</button>
+</section>
 <section class="results">
   <app-cuerpos
   *ngFor="let cuerpos of filteredLocationList"
