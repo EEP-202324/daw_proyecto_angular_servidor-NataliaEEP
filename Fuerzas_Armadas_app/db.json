@@ -116,6 +116,15 @@
       "pais": "ESP",
       "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Banda_militar_corneta.jpg/1200px-Banda_militar_corneta.jpg",
       "pdf": "https://reclutamiento.defensa.gob.es/pdf/folletos-defensa/ofi-con/OFICIALES-MUSICA.pdf"
+    },
+    {
+      "id": "13",
+      "cuerpo": "USA Navy",
+      "titulacion": "Titulo Universitario",
+      "requisitos_edad": "Menos de 37 años",
+      "pais": "USA",
+      "photo": "https://media.defense.gov/2021/Jan/14/2002564966/1460/1280/0/210111-N-IE405-1204.JPG",
+      "pdf": "https://www.secnav.navy.mil/doni/US%20Navy%20Regulations/index.pdf"
     }
   ]
 }

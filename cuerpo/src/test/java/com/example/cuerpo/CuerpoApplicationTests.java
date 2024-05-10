@@ -27,16 +27,16 @@ class CuerpoApplicationTests {
 
 	@Test
 	void shouldReturnACuerpoWhenDataIsSaved() {
-		ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos/99", String.class);
+		ResponseEntity<String> response = restTemplate.getForEntity("/cuerpos/999999", String.class);
 
 		assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
 		DocumentContext documentContext = JsonPath.parse(response.getBody());
 		Number id = documentContext.read("$.id");
-		assertThat(id).isEqualTo(99);
+		assertThat(id).isEqualTo(999999);
 
 		String cuerpo = documentContext.read("$.cuerpo");
-		assertThat(cuerpo).isEqualTo("Navy");
+		assertThat(cuerpo).isEqualTo("Air Force");
 
 		String titulacion = documentContext.read("$.titulacion");
 		assertThat(titulacion).isEqualTo("Titulacion Universitaria");

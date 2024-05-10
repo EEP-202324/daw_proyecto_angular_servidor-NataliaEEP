@@ -11,13 +11,29 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 })
 export class CuerposService {
 
-  url = 'http://localhost:3000/cuerpos';
-  urlPeticion = 'http://localhost:8080/cuerpo';
+  // url = 'http://localhost:3000/cuerpos';
+  url = 'http://localhost:8080/cuerpos';
   constructor(private http: HttpClient) { }
 
   getCuerpos() {
     return this.http.get<CuerposInterface[]>(this.url);
   }
+
+  // getCuerposPaginable(numPag: number) {
+  //   return this.http.get<CuerposInterface[]>(`${this.url}?page=${numPag}&size=3&sort=cuerpo`);
+  // }
+  // getCuerposPaginable(pageNumber: number) {
+  //   return this.http.get<CuerposInterface[]>(`${this.url}?page=${pageNumber}&size=3&sort=cuerpo`);
+  // }
+  getCuerposPaginable(pageNumber: number): Observable<{ cuerpos: CuerposInterface[], totalPages: number }> {
+    return this.http.get<any>(`${this.url}?page=${pageNumber}&size=3&sort=cuerpo`).pipe(
+      map(response => ({
+        cuerpos: response.content,
+        totalPages: response.totalPages
+      }))
+    );
+  }
+
 
   getCuerpo(id: number) {
     return this.http.get<CuerposInterface>(`${this.url}/${id}`);
