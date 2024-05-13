@@ -69,6 +69,7 @@ export class DetailsComponent implements OnInit {
         next: cuerpoModificado => {
           console.log('Cuerpo modificado', cuerpoModificado);
           alert('Cuerpo modificado exitosamente');
+          this.cuerposLocation = cuerpoModificado;
         },
         error: error => {
           console.log('Error al modificar el cuerpo', error);

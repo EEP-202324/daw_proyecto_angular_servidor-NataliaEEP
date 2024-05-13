@@ -55,22 +55,23 @@ class CuerpoController {
 	}
 
 	@PutMapping("/{requestedId}")
-	private ResponseEntity<Void> putCuerpo(@PathVariable Long requestedId, @RequestBody Cuerpo cuerpoUpdate) {
-		Optional<Cuerpo> cuerpoOptional = cuerpoRepository.findById(requestedId);
-		if (cuerpoOptional.isPresent()) {
-			Cuerpo existingCuerpo = cuerpoOptional.get();
-			existingCuerpo.setCuerpo(cuerpoUpdate.getCuerpo());
-			existingCuerpo.setTitulacion(cuerpoUpdate.getTitulacion());
-			existingCuerpo.setRequisitos_edad(cuerpoUpdate.getRequisitos_edad());
-			existingCuerpo.setPais(cuerpoUpdate.getPais());
-			existingCuerpo.setPhoto(cuerpoUpdate.getPhoto());
-			existingCuerpo.setPdf(cuerpoUpdate.getPdf());
-			cuerpoRepository.save(existingCuerpo);
-			return ResponseEntity.noContent().build();
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	private ResponseEntity<Cuerpo> putCuerpo(@PathVariable Long requestedId, @RequestBody Cuerpo cuerpoUpdate) {
+	    Optional<Cuerpo> cuerpoOptional = cuerpoRepository.findById(requestedId);
+	    if (cuerpoOptional.isPresent()) {
+	        Cuerpo existingCuerpo = cuerpoOptional.get();
+	        existingCuerpo.setCuerpo(cuerpoUpdate.getCuerpo());
+	        existingCuerpo.setTitulacion(cuerpoUpdate.getTitulacion());
+	        existingCuerpo.setRequisitos_edad(cuerpoUpdate.getRequisitos_edad());
+	        existingCuerpo.setPais(cuerpoUpdate.getPais());
+	        existingCuerpo.setPhoto(cuerpoUpdate.getPhoto());
+	        existingCuerpo.setPdf(cuerpoUpdate.getPdf());
+	        Cuerpo updatedCuerpo = cuerpoRepository.save(existingCuerpo);
+	        return ResponseEntity.ok(updatedCuerpo);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
+
 
 	@DeleteMapping("/{id}")
 	private ResponseEntity<Void> deleteCuerpo(@PathVariable Long id) {
