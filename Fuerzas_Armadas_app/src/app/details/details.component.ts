@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 export class DetailsComponent implements OnInit {
   cuerposLocation: CuerposInterface | undefined;
   applyForm: FormGroup;
-  mostrarDatos = false; // Variable para controlar la visibilidad de los datos existentes
+  mostrarDatos = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -68,7 +68,7 @@ export class DetailsComponent implements OnInit {
       this.cuerposService.modificarCuerpo(cuerpoDatos).subscribe({
         next: cuerpoModificado => {
           console.log('Cuerpo modificado', cuerpoModificado);
-          alert('Cuerpo modificado exitosamente');
+          alert('Cuerpo modificado');
           this.cuerposLocation = cuerpoModificado;
         },
         error: error => {
