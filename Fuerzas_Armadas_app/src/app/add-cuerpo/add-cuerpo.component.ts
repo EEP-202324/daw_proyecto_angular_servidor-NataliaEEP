@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { CuerposService } from '../cuerpos.service';
 import { CuerposInterface } from '../cuerposInterface';
 
-
 @Component({
   selector: 'app-add-cuerpo',
   standalone: true,

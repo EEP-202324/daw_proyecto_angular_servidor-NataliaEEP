@@ -7,12 +7,12 @@
   <section class="listing-apply">
     <h2 class="section-heading">Modificar Cuerpo:</h2>
     <form [formGroup]="applyForm" (submit)="onSubmit()">
-      <div *ngIf="!mostrarDatos"> <!-- Mostrar solo si los datos existentes están ocultos -->
+      <div *ngIf="!mostrarDatos">
         <button type="button" (click)="toggleDatos()" class="primary">Editar</button>
         <button type="button" (click)="borrarCuerpo(cuerposLocation?.id)" class="borrarBig">Borrar Cuerpo</button>
 
       </div>
-      <div *ngIf="mostrarDatos"> <!-- Mostrar solo si los datos existentes están visibles -->
+      <div *ngIf="mostrarDatos">
         <label for="cuerpo">Cuerpo</label>
         <input id="cuerpo" type="text" formControlName="cuerpo">
         <label for="titulacion">Titulación</label>

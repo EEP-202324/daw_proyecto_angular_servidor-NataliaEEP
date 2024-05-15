@@ -39,13 +39,10 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Obtener el ID del cuerpo de la URL
     const cuerpoId = Number(this.route.snapshot.params['id']);
-    // Obtener los datos del cuerpo correspondiente al ID
     this.cuerposService.getCuerpo(cuerpoId).subscribe({
       next: cuerpo => {
         this.cuerposLocation = cuerpo;
-        // Rellenar el formulario con los datos del cuerpo obtenido
         this.applyForm.patchValue({
           cuerpo: cuerpo.cuerpo,
           titulacion: cuerpo.titulacion,
@@ -63,12 +60,8 @@ export class DetailsComponent implements OnInit {
 
   onSubmit(): void {
     if (this.applyForm.valid) {
-      // Obtener los datos del formulario
       const cuerpoDatos = this.applyForm.value;
-      // Conservar el ID original en el objeto de datos
       cuerpoDatos.id = this.cuerposLocation?.id;
-
-      // Modificar el cuerpo con los nuevos datos
       this.cuerposService.modificarCuerpo(cuerpoDatos).subscribe({
         next: cuerpoModificado => {
           console.log('Cuerpo modificado', cuerpoModificado);
@@ -83,7 +76,6 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  // Método para cambiar la visibilidad de los datos existentes en el formulario
   toggleDatos(): void {
     this.mostrarDatos = !this.mostrarDatos;
   }
@@ -93,7 +85,6 @@ export class DetailsComponent implements OnInit {
   }
 
   cancelar(): void {
-    // Cerrar el formulario de modificación
     this.mostrarDatos = false;
   }
 
