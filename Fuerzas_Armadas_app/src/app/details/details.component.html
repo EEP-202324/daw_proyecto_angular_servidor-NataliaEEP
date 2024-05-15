@@ -9,6 +9,8 @@
     <form [formGroup]="applyForm" (submit)="onSubmit()">
       <div *ngIf="!mostrarDatos"> <!-- Mostrar solo si los datos existentes están ocultos -->
         <button type="button" (click)="toggleDatos()" class="primary">Editar</button>
+        <button type="button" (click)="borrarCuerpo(cuerposLocation?.id)" class="borrarBig">Borrar Cuerpo</button>
+
       </div>
       <div *ngIf="mostrarDatos"> <!-- Mostrar solo si los datos existentes están visibles -->
         <label for="cuerpo">Cuerpo</label>

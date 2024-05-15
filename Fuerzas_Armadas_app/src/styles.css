@@ -80,6 +80,22 @@ button:hover.secondarySmall {
   --link-color: #fc6100;
 }
 
+button.borrarBig {
+  padding: 10px;
+  border: solid 1px var(--link-color);
+  background: var(--link-color);
+  color: white;
+  border-radius: 8px;
+  margin-left: 60px;
+  border-radius: 8px;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+button:hover.borrarBig {
+  --link-color: #fc6100;
+}
+
 button.borrarSmall {
   padding: 10px;
   border: solid 1px var(--link-color);
