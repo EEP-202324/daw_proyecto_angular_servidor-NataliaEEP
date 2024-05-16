@@ -1,8 +1,11 @@
 <section class="listing">
   <img class="listing-photo" [src]="cuerpos.photo" alt="{{cuerpos.cuerpo}}">
   <h2 class="listing-heading">{{ cuerpos.cuerpo }}</h2>
-  <p class="listing-location">{{ cuerpos.pais}}</p>
-  <a [routerLink]="['/details', cuerpos.id]">Más Info</a>
-  <button type="button" (click)="borrarCuerpo(cuerpos.id)" class="borrarSmall">Borrar Cuerpo</button>
+  <select class="listing-location" [(ngModel)]="cuerpos.pais" (ngModelChange)="actualizarPais($event)">
+    <option *ngFor="let pais of paises" [value]="pais">{{ pais }}</option>
+  </select>
+  <section class="listing2">
+    <a [routerLink]="['/details', cuerpos.id]">Más Info</a>
+    <button type="button" (click)="borrarCuerpo(cuerpos.id)" class="borrarSmall">Borrar Cuerpo</button>
+  </section>
 </section>
-<br>
