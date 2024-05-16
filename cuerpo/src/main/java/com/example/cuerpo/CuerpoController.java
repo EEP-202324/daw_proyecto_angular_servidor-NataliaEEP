@@ -73,13 +73,30 @@ class CuerpoController {
 	    }
 	}
 	
+	@PutMapping("/{requestedId}/pais")
+	private ResponseEntity<Cuerpo> putPais(@PathVariable Long requestedId, @RequestParam String nuevoPais) {
+	    Optional<Cuerpo> cuerpoOptional = cuerpoRepository.findById(requestedId);
+	    if (cuerpoOptional.isPresent()) {
+	        Cuerpo existingCuerpo = cuerpoOptional.get();
+	        existingCuerpo.setPais(nuevoPais);
+	        Cuerpo updatedCuerpo = cuerpoRepository.save(existingCuerpo);
+	        return ResponseEntity.ok(updatedCuerpo);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
+	
 	@GetMapping("/search")
 	private ResponseEntity<List<Cuerpo>> searchCuerpos(@RequestParam(value = "searchTerm") String searchTerm) {
 	    List<Cuerpo> cuerpos = cuerpoRepository.findByCuerpoContainingIgnoreCase(searchTerm);
 	    return ResponseEntity.ok(cuerpos);
 	}
-
-
+	
+	@GetMapping("/paises")
+	public ResponseEntity<List<String>> getAllDistinctPaises() {
+	    List<String> paises = cuerpoRepository.findAllDistinctPaises();
+	    return ResponseEntity.ok(paises);
+	}
 
 	@DeleteMapping("/{id}")
 	private ResponseEntity<Void> deleteCuerpo(@PathVariable Long id) {
