@@ -13,10 +13,14 @@ export class CuerposService {
   // url = 'http://localhost:3000/cuerpos';
   url = 'http://localhost:8080/cuerpos';
   constructor(private http: HttpClient) { }
-
-  getCuerpos() {
-    return this.http.get<CuerposInterface[]>(this.url);
+  getPaises(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.url}/paises`);
   }
+
+  modificarPais(id: number, nuevoPais: string): Observable<void> {
+    return this.http.put<void>(`${this.url}/${id}/pais`, null, { params: { nuevoPais } });
+  }
+
   searchCuerpos(searchTerm: string): Observable<CuerposInterface[]> {
     return this.http.get<CuerposInterface[]>(`${this.url}/search?searchTerm=${searchTerm}`);
   }
