@@ -1,16 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CuerposInterface } from './cuerposInterface';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Peticion } from './peticion';
 import { Observable } from 'rxjs';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CuerposService {
 
-  // url = 'http://localhost:3000/cuerpos';
   url = 'http://localhost:8080/cuerpos';
   constructor(private http: HttpClient) { }
   getPaises(): Observable<string[]> {
@@ -61,8 +59,8 @@ borrarCuerpo(id: number | string): Observable<void> {
   return this.http.delete<void>(deleteUrl)
     .pipe(
       catchError((error: HttpErrorResponse) => {
-        throw 'Error al intentar borrar el cuerpo';
+        throw new Error('Error al intentar borrar el cuerpo');
       })
     );
-}
+  }
 }
