@@ -1,3 +1,5 @@
+Aplicación web para Aula y el Ministerio de Defensa, que permite visualizar los diferentes cuerpos disponibles, la titulación requerida para ingresar, los requisitos de edad, un PDF con información adicional, una foto del cuerpo y el país de destino (este último se podría cambiar por la ciudad española de destino posible). <br>
+Esta aplicación está desarrollada utilizando Angular, Spring Boot y MySql. <br>
 Aplicación que cumple con los requisitos mínimos: <br>
 Aplicación Angular que hace peticiones REST a un servidor Spring que se conecta a una base  <br>
 de datos, para manejar datos de los Cuerpos de las Fuerzas Armadas.  <br>
