@@ -80,10 +80,6 @@ export class DetailsComponent implements OnInit {
     this.mostrarDatos = !this.mostrarDatos;
   }
 
-  toggleFormulario(): void {
-    this.mostrarDatos = true;
-  }
-
   cancelar(): void {
     this.mostrarDatos = false;
   }

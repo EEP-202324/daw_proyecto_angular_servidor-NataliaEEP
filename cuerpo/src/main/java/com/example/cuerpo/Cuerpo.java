@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 @Entity
 public class Cuerpo {
 
-//	@Id
 	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
