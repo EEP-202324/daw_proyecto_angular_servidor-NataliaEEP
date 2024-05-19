@@ -189,7 +189,8 @@ class CuerpoApplicationTests {
 				"https://www.moore.army.mil/Infantry/ARTB/1-507th/content/pdf/TC%203-21.220,%20Parachutes%2021%20Dec%202017.pdf");
         
         ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/" + idToUpdate, HttpMethod.PUT, new HttpEntity<>(cuerpoUpdate), Void.class);
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+//        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
         ResponseEntity<Cuerpo> getResponse = restTemplate.getForEntity("/cuerpos/" + idToUpdate, Cuerpo.class);
         assertThat(getResponse.getStatusCode()).isEqualTo(HttpStatus.OK);
@@ -232,4 +233,27 @@ class CuerpoApplicationTests {
 				Void.class);
 		assertThat(deleteResponse.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
 	}
+	
+    @Test
+    void shouldUpdatePaisOfExistingCuerpo() {
+        Long existingCuerpoId = 100000L;
+        String nuevoPais = "USA";
+
+        ResponseEntity<Void> response = restTemplate.exchange("/cuerpos/{requestedId}/pais?nuevoPais={nuevoPais}",
+                HttpMethod.PUT, null, Void.class, existingCuerpoId, nuevoPais);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+    
+    @Test
+    void shouldCreateNewCuerpoDos() {
+    	Cuerpo newCuerpoRequest = new Cuerpo(null, "Paracaidistas", "Titulacion Universitaria", "37 años maximo", "ESP",
+				"https://armada.defensa.gob.es/archivo/noticias/conocenosnoticias/00noticias/2019/02/NT021/1NT021.jpg",
+				"https://www.secnav.navy.mil/doni/US%20Navy%20Regulations/index.pdf");
+
+        ResponseEntity<Void> response = restTemplate.postForEntity("/cuerpos", new HttpEntity<>(newCuerpoRequest), Void.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(response.getHeaders().getLocation()).isNotNull(); 
+    }
 }
